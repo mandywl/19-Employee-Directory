@@ -1,0 +1,26 @@
+.employee-list .staff-name {
+  font-weight: 600;
+  color: #337ab7;
+  font-size: 1.3em;
+  line-height: 100%;
+}
+.employee-list {
+  font-size: 1.1em;
+}
+
+.employee-list .staff-item {
+  border-bottom: 1px dotted gray;
+}
+
+.employee-list .staff-item:last-child {
+  border-bottom: none;
+}
+
+.employee-list {
+  font-size: 1.1em;
+}
+
+.employee-list .label-item {
+  font-weight: 600;
+  color: #667b82;
+}

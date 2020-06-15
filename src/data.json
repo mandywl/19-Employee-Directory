@@ -1,0 +1,55 @@
+[
+  {
+    "id": 0,
+    "title": "Mr",
+    "firstName": "Reggie",
+    "surname": "Tupp",
+    "position": "Teacher, English Language",
+    "department": "Western Melbourne English Program",
+    "phone": "+610399198300",
+    "mobile": "+61042313213",
+    "email": "reggie.tupp@uni.edu.au",
+    "building": "C121",
+    "location": "Sunshine",
+    "fax": "99195389"
+  },
+  {
+    "id": 1,
+    "title": "Mr",
+    "firstName": "Philip",
+    "surname": "Ransu",
+    "position": "Student Advisor",
+    "department": "Western Melbourne English Program",
+    "phone": "+610399198300",
+    "mobile": "+61042313213",
+    "email": "philip.ransu@uni.edu.au",
+    "building": "C121",
+    "location": "Sunshine"
+  },
+  {
+    "id": 2,
+    "title": "Mr",
+    "firstName": "Howie",
+    "surname": "Cadell",
+    "position": "Enrolment Support Officer",
+    "department": "Enrolments & Student Financials",
+    "phone": "+610399195124",
+    "mobile": "+61042124124",
+    "email": "Howie.Cadell@uni.edu.au",
+    "building": "M342",
+    "location": "Footscray Park"
+  },
+  {
+    "id": 3,
+    "title": "Ms",
+    "firstName": "Freya",
+    "surname": "Terray",
+    "position": "Business Support Offcier",
+    "department": "Ofc of the Director (Employability & Success",
+    "phone": "+610399134413",
+    "mobile": "+61046442213",
+    "email": "Freya.Terray@uni.edu.au",
+    "building": "M235",
+    "location": "Footscray Park"
+  }
+]
