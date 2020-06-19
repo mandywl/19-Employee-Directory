@@ -18,3 +18,7 @@ footer {
   background-color: #377bb5 !important;
   border: inherit;
 }
+
+main {
+  min-height: calc(100vh - 44px - 100px);
+}
