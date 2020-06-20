@@ -21,13 +21,6 @@ class App extends Component {
     this.changeFilter = this.changeFilter.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.state.employees.map((category) => {
-  //     this.setState({ departments: category.department });
-  //     return category.department;
-  //   });
-  // }
-
   changeOrder(order, dir) {
     this.setState({
       orderBy: order,
@@ -42,12 +35,10 @@ class App extends Component {
   }
 
   render() {
-    console.log("this.props.departments", this.state.departments);
     let order;
     let filteredEmployees;
     let filteredDepartments = this.state.employees
       .map((category) => {
-        console.log("category.department", category.department);
         return category.department;
       })
       .reduce(
@@ -74,8 +65,6 @@ class App extends Component {
           }
         })
         .filter((eachItem) => {
-          console.log("each item is ", eachItem.department);
-          console.log("this.state.filterBy", this.state.filterBy);
           return eachItem.department
             .toLowerCase()
             .includes(this.state.filterBy.toLowerCase());
