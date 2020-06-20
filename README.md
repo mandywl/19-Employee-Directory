@@ -18,10 +18,6 @@
 >
 > The above will install the project dependencies.
 
-> > `npm run seed;` (Optional)
->
-> The above will create a db for test development, if you have the MongoDB and Compass set up.
-
 ## Usage
 
 > > ```sh
