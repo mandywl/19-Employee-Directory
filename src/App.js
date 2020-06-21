@@ -5,7 +5,6 @@ import SortEmployees from "./components/SortEmployees";
 import FilterEmployees from "./components/FilterEmployees";
 import employees from "./data.json";
 import "./css/App.css";
-import { unique } from "jquery";
 
 class App extends Component {
   constructor() {
