@@ -11,7 +11,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      employees,
+      employees:employees.sort((a, b) => a.firstName<b.firstName? -1 : 1),
       orderBy: "firstName",
       filterBy: "allDepartments",
       orderDir: "asc",

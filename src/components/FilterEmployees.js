@@ -1,51 +1,49 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from "react";
 
-class FilterEmployees extends Component {
-  render() {
-    return (
-      <div className="col-md-3">
-        <div className="select-property">
-          <div className="select-property-append">
+function FilterEmployees (props) {
+  return (
+    <div className="col-md-3">
+      <div className="select-property">
+        <div className="select-property-append">
+          <button
+            type="button"
+            className="btn btn-primary dropdown-toggle"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Filter department by: <span className="caret" />
+          </button>
+          <div className="sort-menu dropdown-menu dropdown-menu-right">
             <button
-              type="button"
-              className="btn btn-primary dropdown-toggle"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
+              className={
+                "sort-by dropdown-item " +
+                (props.filterBy === "allDepartment" ? "active" : "")
+              }
+              onClick={(e) => props.changeFilter("allDepartments")}
+              href="#"
             >
-              Filter department by: <span className="caret" />
+              All Departments
             </button>
-            <div className="sort-menu dropdown-menu dropdown-menu-right">
+            {props.departments.map((department) => (
               <button
                 className={
                   "sort-by dropdown-item " +
-                  (this.props.filterBy === "allDepartment" ? "active" : "")
+                  (props.filterBy === department ? "active" : "")
                 }
-                onClick={(e) => this.props.changeFilter("allDepartments")}
+                key={department}
+                onClick={(e) => props.changeFilter(department)}
                 href="#"
               >
-                All Departments
+                {department}
               </button>
-              {this.props.departments.map((department) => (
-                <button
-                  className={
-                    "sort-by dropdown-item " +
-                    (this.props.filterBy === department ? "active" : "")
-                  }
-                  key={department}
-                  onClick={(e) => this.props.changeFilter(department)}
-                  href="#"
-                >
-                  {department}
-                </button>
-              ))}
-            </div>
+            ))}
           </div>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default FilterEmployees;
