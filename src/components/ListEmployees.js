@@ -1,6 +1,15 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 
+export const EmployeeDetail = ({label, value}) => {
+  return (
+    <div className="staff-details">
+      <span className="label-item">{label}</span>
+      <span>{value}</span>
+    </div>
+  );
+};
+
 function listEmployees(props) {
   return (
     <div className="staff-item col media py-3">
@@ -10,34 +19,13 @@ function listEmployees(props) {
             {props.firstName} {props.surname}
           </span>
         </div>
-        <div className="staff-details">
-          <span className="label-item">Position: </span>
-          <span>{props.position}</span>
-        </div>
-        <div className="staff-details">
-          <span className="label-item">Department: </span>
-          <span>{props.department}</span>
-        </div>
-        <div className="staff-details">
-          <span className="label-item">P: </span>
-          <span>{props.phone}</span>
-        </div>
-        <div className="staff-details">
-          <span className="label-item">M: </span>
-          <span>{props.mobile}</span>
-        </div>
-        <div className="staff-details">
-          <span className="label-item">E: </span>
-          <span>{props.email}</span>
-        </div>
-        <div className="staff-details">
-          <span className="label-item">Building: </span>
-          <span>{props.building}</span>
-        </div>
-        <div className="staff-details">
-          <span className="label-item">Location: </span>
-          <span>{props.location}</span>
-        </div>
+        <EmployeeDetail label="Position: " value={props.position}/>
+        <EmployeeDetail label="Department: " value={props.department}/>
+        <EmployeeDetail label="P: " value={props.phone}/>
+        <EmployeeDetail label="M: " value={props.mobile}/>
+        <EmployeeDetail label="E: " value={props.email}/>
+        <EmployeeDetail label="Building: " value={props.building}/>
+        <EmployeeDetail label="Location: " value={props.location}/>
       </div>
     </div>
   );

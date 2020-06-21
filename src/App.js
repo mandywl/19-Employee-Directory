@@ -5,26 +5,46 @@ import SortEmployees from "./components/SortEmployees";
 import FilterEmployees from "./components/FilterEmployees";
 import employees from "./data.json";
 import "./css/App.css";
-import { unique } from "jquery";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      employees,
+      employees:employees.sort((a, b) => a.firstName<b.firstName? -1 : 1),
       orderBy: "firstName",
       filterBy: "allDepartments",
       orderDir: "asc",
-      departments: [],
+      departments: employees
+        .map((category) => {
+          return category.department;
+        })
+        .reduce(
+          (unique, item) =>
+            unique.includes(item) ? unique : [...unique, item],
+          []
+        ),
     };
     this.changeOrder = this.changeOrder.bind(this);
     this.changeFilter = this.changeFilter.bind(this);
   }
 
-  changeOrder(order, dir) {
+  changeOrder(orderBy, dir) {
+    let sortDirection;
+    if (dir === "asc") {
+      sortDirection = 1;
+    } else {
+      sortDirection = -1;
+    }
     this.setState({
-      orderBy: order,
       orderDir: dir,
+
+      employees: this.state.employees.sort((a, b) => {
+        if (a[orderBy].toLowerCase() < b[orderBy].toLowerCase()) {
+          return -1 * sortDirection;
+        } else {
+          return 1 * sortDirection;
+        }
+      }),
     });
   }
 
@@ -35,53 +55,6 @@ class App extends Component {
   }
 
   render() {
-    let order;
-    let filteredEmployees;
-    let filteredDepartments = this.state.employees
-      .map((category) => {
-        return category.department;
-      })
-      .reduce(
-        (unique, item) => (unique.includes(item) ? unique : [...unique, item]),
-        []
-      );
-
-    if (this.state.orderDir === "asc") {
-      order = 1;
-    } else {
-      order = -1;
-    }
-
-    if (this.state.filterBy !== "allDepartments") {
-      filteredEmployees = this.state.employees
-        .sort((a, b) => {
-          if (
-            a[this.state.orderBy].toLowerCase() <
-            b[this.state.orderBy].toLowerCase()
-          ) {
-            return -1 * order;
-          } else {
-            return 1 * order;
-          }
-        })
-        .filter((eachItem) => {
-          return eachItem.department
-            .toLowerCase()
-            .includes(this.state.filterBy.toLowerCase());
-        });
-    } else {
-      filteredEmployees = this.state.employees.sort((a, b) => {
-        if (
-          a[this.state.orderBy].toLowerCase() <
-          b[this.state.orderBy].toLowerCase()
-        ) {
-          return -1 * order;
-        } else {
-          return 1 * order;
-        }
-      });
-    }
-
     return (
       <main className="page bg-white" id="petratings">
         <div className="container">
@@ -91,7 +64,7 @@ class App extends Component {
                 <div className="sort-employees justify-content-center row my-4">
                   <FilterEmployees
                     filterBy={this.state.filterBy}
-                    departments={filteredDepartments}
+                    departments={this.state.departments}
                     changeFilter={this.changeFilter}
                   />
                   <SortEmployees
@@ -101,21 +74,25 @@ class App extends Component {
                   />
                 </div>
                 <div className="employee-list item-list mb-3">
-                  {filteredEmployees.map((employee) => (
-                    <ListEmployees
-                      id={employee.id}
-                      key={employee.id}
-                      firstName={employee.firstName}
-                      surname={employee.surname}
-                      position={employee.position}
-                      department={employee.department}
-                      phone={employee.phone}
-                      mobile={employee.mobile}
-                      building={employee.building}
-                      email={employee.email}
-                      location={employee.location}
-                    />
-                  ))}
+                  {employees
+                    .map((employee) =>
+                      employee.department === this.state.filterBy ||
+                      this.state.filterBy === "allDepartments" ? (
+                          <ListEmployees
+                            id={employee.id}
+                            key={employee.id}
+                            firstName={employee.firstName}
+                            surname={employee.surname}
+                            position={employee.position}
+                            department={employee.department}
+                            phone={employee.phone}
+                            mobile={employee.mobile}
+                            building={employee.building}
+                            email={employee.email}
+                            location={employee.location}
+                          />
+                        ) : null
+                    )}
                 </div>
               </div>
             </div>
