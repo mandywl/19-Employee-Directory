@@ -16,7 +16,6 @@ class App extends Component {
       orderDir: "asc",
       departments: employees
         .map((category) => {
-          console.log("category.department", category.department);
           return category.department;
         })
         .reduce(
@@ -36,7 +35,6 @@ class App extends Component {
     } else {
       sortDirection = -1;
     }
-    console.log("order is ", dir);
     this.setState({
       orderDir: dir,
 
